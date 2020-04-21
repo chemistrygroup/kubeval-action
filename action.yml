@@ -1,6 +1,6 @@
 name: "Kubeval"
 description: "Validate Kubernetes manifests using the upstream Schemas"
-author: "Gareth Rushgrove"
+author: "Gareth Rushgrove modified by The Chemistry Group"
 branding:
   icon: "check"
   color: "green"
@@ -23,6 +23,9 @@ inputs:
   ignore_missing_schemas:
     description: "Whether or not to skip custom resources" 
     default: true
+  skip_kinds:
+    description: "Resource kinds to skip" 
+    default: "none"
 runs:
   using: 'docker'
   image: 'docker://garethr/kubeval:latest'
@@ -36,4 +39,6 @@ runs:
   - ${{ inputs.version }}
   - --openshift=${{ inputs.openshift }}
   - --ignore-missing-schemas=${{ inputs.ignore_missing_schemas }}
+  - --skip-kinds
+  - ${{ inputs.skip_kinds }}
 

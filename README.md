@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: test
-      uses: instrumenta/kubeval-action@master
+      uses: chemistrygroup/kubeval-action@master
 ```
 
 By default the action will recursively scan for YAML files and validate them as Kubernetes obejcts. You can configure this with the parameters.
@@ -27,6 +27,7 @@ passed to the action using `with`.
 | output | stdout | How to format the output from Conftest (stdout, json or tap) |
 | openshift | false | Whether or not to use the OpenShift schemas rather than the upstread Kubernetes ones |
 | strict | true | Whether ot not to fail for additional properties in objects |
+| skip_kinds | "none" | Resource kinds to skip, comma separated |
 | ignore_missing_schemas | true | Whether to fail if unknown resources are found |
 | version | master | Which version of Kubernetes to validate against |
 
